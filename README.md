@@ -1,56 +1,103 @@
-# ExPart Showcase
+# ExPart
 
-Next.js rewrite of the original Laravel/Livewire ExPart marketplace. The app is a
-portfolio showcase using deterministic demo data, real ExPart assets, Google
-OAuth, and Cloudflare Workers deployment configuration.
+Modern Next.js rewrite of ExPart, an Indonesian marketplace for discovering,
+comparing, and validating products before purchase.
+
+**Live site:** [expart.store](https://expart.store)
+
+## Features
+
+- Product discovery, categories, search, and detail pages
+- Exa AI quick scans and deeper product analysis
+- Price, rating, specification, and seller comparisons
+- Community content and account flows
+- Responsive light and dark themes
+- Google OAuth support
+- Daily AI usage limits
+- Cloudflare Workers deployment through OpenNext
+
+The public showcase currently uses deterministic catalog data while preserving
+the original ExPart interface and core user journeys.
+
+## Tech stack
+
+- Next.js 16 and React 19
+- TypeScript
+- Tailwind CSS 4
+- Google Gemini
+- OpenNext for Cloudflare
+- Cloudflare Workers
 
 ## Local development
 
+Requirements:
+
+- Node.js 22
+- npm
+
 ```powershell
+git clone https://github.com/justhenix/expart-showcase.git
+Set-Location expart-showcase
 npm install
+Copy-Item .env.example .env
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000).
 
-Copy `.env.example` to `.env`, then configure Google OAuth with these redirect
-URIs:
+Most showcase pages work without external credentials. Add the relevant values
+to `.env` to test Google sign-in, Gemini analysis, or Turso-backed features.
+
+## Environment variables
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_APP_URL` | Public application URL |
+| `AUTH_URL` | Authentication origin |
+| `AUTH_SECRET` | Session-signing secret |
+| `AUTH_GOOGLE_ID` | Google OAuth client ID |
+| `AUTH_GOOGLE_SECRET` | Google OAuth client secret |
+| `GEMINI_API_KEY` | Gemini API key for Exa AI |
+| `GEMINI_MODEL_QUICK` | Model used for quick scans |
+| `GEMINI_MODEL_DEEP` | Model used for deep analysis |
+| `EXPART_LIMIT_FREE_QUICK` | Daily quick-scan allowance |
+| `EXPART_LIMIT_FREE_DEEP` | Daily deep-analysis allowance |
+| `TURSO_DATABASE_URL` | Turso database URL |
+| `TURSO_AUTH_TOKEN` | Turso authentication token |
+
+For Google OAuth, register:
 
 ```text
 http://localhost:3000/auth/google/callback
-http://localhost:3001/auth/google/callback
 https://expart.store/auth/google/callback
 ```
 
-Use the matching origin for `AUTH_URL`. Generate `AUTH_SECRET` with at least 32
-random bytes.
+Generate a strong, unique `AUTH_SECRET`; never commit real credentials.
 
-## Verification
+## Quality checks
 
 ```powershell
 npm run check
 npm run build:cloudflare
 ```
 
-## Cloudflare
+## Deployment
 
-Production runs on the Nebula Chokeberry Cloudflare account:
+Pushes to `main` run linting, type checks, an OpenNext build, then deploy to
+Cloudflare Workers through GitHub Actions.
 
-- `https://expart.store`
-- `https://www.expart.store`
-- `https://expart-showcase.nebula-chokeberry.workers.dev`
-
-Pushes to `main` run checks, build the OpenNext Worker, then deploy through
-GitHub Actions.
+For a manual preview or deployment:
 
 ```powershell
 npm run preview
 npm run deploy
 ```
 
-## Future service boundaries
+Cloudflare credentials and production secrets must be configured outside the
+repository.
 
-- Replace `src/data/catalog.ts` with a Turso-backed repository.
-- Replace stateless showcase sessions with Turso-backed user accounts when
-  persistent profiles are required.
-- Add Turso-backed Exa AI quota and analysis history.
+## Project status
+
+This repository is a portfolio showcase and modernization of the original
+Laravel/Livewire application. Production database persistence and supporting
+infrastructure remain separate deployment concerns.

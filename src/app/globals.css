@@ -1,0 +1,323 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/plus-jakarta-sans-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+    U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+    U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.exa-input {
+  display: block;
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid var(--color-mist);
+  border-radius: 0.75rem;
+  background: var(--color-card);
+  color: var(--color-heading);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.exa-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+.exa-input::placeholder {
+  color: var(--color-hint);
+}
+
+.exa-page {
+  padding-block: 1.25rem;
+}
+
+.exa-workspace-form-only,
+.exa-workspace-result-only {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.exa-workspace-card {
+  min-width: 0;
+}
+
+.exa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.exa-upload-empty {
+  height: 11rem;
+  border-radius: 0.75rem;
+}
+
+.exa-upload-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.75rem;
+}
+
+.exa-fields {
+  position: relative;
+  z-index: 40;
+  gap: 0.75rem;
+}
+
+.exa-category-select {
+  position: relative;
+}
+
+.exa-category-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.exa-category-chevron {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.exa-category-menu {
+  max-height: 15rem;
+  z-index: 50;
+  background: var(--color-card);
+  border: 1px solid var(--color-mist);
+  box-shadow: 0 8px 16px rgb(15 23 42 / 12%);
+  animation: navbar-dropdown-in 120ms ease-out;
+  transform-origin: top right;
+}
+
+.exa-action-row {
+  border-radius: 0.75rem;
+}
+
+.exa-action-main {
+  min-height: 3rem;
+  padding-block: 0.875rem;
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+.exa-action-trigger {
+  min-height: 3rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.exa-process-image {
+  width: 10rem;
+  height: 10rem;
+}
+
+.exa-result-avatar {
+  width: 3rem;
+  height: 3rem;
+}
+
+.exa-trend-panel {
+  background: color-mix(in srgb, var(--color-page) 45%, var(--color-card));
+}
+
+.exa-trend-chart {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.75rem;
+  height: 10rem;
+  padding-top: 0.25rem;
+}
+
+.exa-trend-column {
+  display: grid;
+  grid-template-rows: 1.25rem minmax(0, 1fr) 1.25rem;
+  min-width: 0;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.exa-trend-price,
+.exa-trend-month {
+  overflow: hidden;
+  color: var(--color-hint);
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exa-trend-track {
+  display: flex;
+  align-items: flex-end;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  background:
+    linear-gradient(to top, transparent 49%, var(--color-mist) 50%, transparent 51%),
+    color-mix(in srgb, var(--color-mist) 45%, transparent);
+}
+
+.exa-trend-bar {
+  display: block;
+  width: 100%;
+  min-height: 0.75rem;
+  border-radius: 0.375rem 0.375rem 0 0;
+  background: var(--color-primary);
+  box-shadow: 0 -4px 12px color-mix(in srgb, var(--color-primary) 22%, transparent);
+  transform-origin: bottom;
+  animation: exa-trend-grow 420ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes exa-trend-grow {
+  from {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+}
+
+@media (min-width: 64rem) {
+  .exa-page {
+    padding-block: 1.5rem;
+  }
+
+  .exa-result-card {
+    height: 100%;
+  }
+
+  .exa-state-panel {
+    height: 100%;
+  }
+}
+
+.exa-action-quick {
+  background: #047857;
+}
+
+.exa-action-quick:hover {
+  background: #059669;
+}
+
+.exa-action-deep {
+  background: #6d28d9;
+}
+
+.exa-action-deep:hover {
+  background: #7c3aed;
+}
+
+.theme-icon-dark {
+  display: none;
+}
+
+.dark .theme-icon-light {
+  display: none;
+}
+
+.dark .theme-icon-dark {
+  display: inline;
+}
+
+@keyframes navbar-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.navbar-dropdown {
+  animation: navbar-dropdown-in 180ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: top right;
+}
+
+.navbar-dropdown-left {
+  transform-origin: top left;
+}
+
+@keyframes exa-mode-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.25rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.exa-mode-dropdown {
+  z-index: 60;
+  background: var(--color-card);
+  border: 1px solid var(--color-mist);
+  box-shadow: 0 8px 16px rgb(15 23 42 / 12%);
+  animation: exa-mode-dropdown-in 120ms ease-out;
+  transform-origin: bottom right;
+}
+
+.exa-mode-menu-open {
+  z-index: 60;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-dropdown,
+  .exa-trend-bar {
+    animation-duration: 1ms;
+  }
+}
+
+.floating-action {
+  isolation: isolate;
+  background: var(--color-card);
+}
+
+.dark .floating-action {
+  background: #0f172a;
+}
+
+.floating-action--exa {
+  border-color: rgb(59 130 246 / 60%);
+}
+
+.floating-actions {
+  right: 1.5rem;
+}
+
+.coming-soon-card {
+  background: rgb(255 255 255 / 90%);
+  border-color: rgb(255 255 255 / 50%);
+}
+
+.dark .coming-soon-card {
+  background: var(--color-card);
+  border-color: var(--color-mist);
+}

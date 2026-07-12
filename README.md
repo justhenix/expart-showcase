@@ -34,8 +34,14 @@ npm run build:cloudflare
 
 ## Cloudflare
 
-The OpenNext adapter, Google OAuth routes, Exa AI API route, and `wrangler.jsonc` are ready.
-Deployment and production secret injection remain environment-specific.
+Production runs on the Nebula Chokeberry Cloudflare account:
+
+- `https://expart.store`
+- `https://www.expart.store`
+- `https://expart-showcase.nebula-chokeberry.workers.dev`
+
+Pushes to `main` run checks, build the OpenNext Worker, then deploy through
+GitHub Actions.
 
 ```powershell
 npm run preview

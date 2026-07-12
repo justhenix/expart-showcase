@@ -8,8 +8,8 @@
   "minify": true,
   "workers_dev": true,
   "routes": [
-    { "pattern": "expart.store", "custom_domain": true },
-    { "pattern": "www.expart.store", "custom_domain": true }
+    { "pattern": "expart.store/*", "zone_name": "expart.store" },
+    { "pattern": "www.expart.store/*", "zone_name": "expart.store" }
   ],
   "assets": {
     "directory": ".open-next/assets",

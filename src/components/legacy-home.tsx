@@ -165,7 +165,7 @@ export function LegacyHome() {
               <p className="text-sm text-body">Hindari scam dan dapatkan rekomendasi harga terbaik sebelum membeli.</p>
             </div>
           </div>
-          <Link href="/exa-ai" className="bg-emerald-700 hover:bg-emerald-800 text-white font-medium px-6 py-2.5 rounded-lg shadow-sm transition active:scale-95 cursor-pointer">
+          <Link href="/exa-ai" className="bg-primary hover:bg-primary-hover text-white font-medium px-6 py-2.5 rounded-lg shadow-sm transition active:scale-95 cursor-pointer">
             Coba Sekarang
           </Link>
         </div>

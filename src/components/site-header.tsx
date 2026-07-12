@@ -250,7 +250,7 @@ export function SiteHeader() {
                 </Link>
                 <Link
                   href="/register"
-                  className="px-4 py-2 bg-emerald-700 text-white rounded-lg text-sm font-bold hover:bg-emerald-800 transition shadow-md hover:shadow-lg cursor-pointer"
+                  className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary-hover transition shadow-md hover:shadow-lg cursor-pointer"
                 >
                   Daftar
                 </Link>
